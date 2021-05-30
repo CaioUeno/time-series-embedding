@@ -13,7 +13,9 @@ This repository contains experiments of using time series embeddings learnt by a
 
 The concept is to embed time series and model a new space of instances. The instances' class is the only information that drives the modeling. There are *two* neural network models - embedder and trainable model - and the embedder is **inside** the trainable model.
 
-The training is as follow: given two instances, the trainable model embeds them using the embedder model and outputs the normalized intern product between their embeddings (**cosine similarity**).
+The training is as follow: given a pair of instances, the trainable model embeds them using the embedder model and outputs the normalized intern product between their embeddings (**cosine similarity**). There are possible labels: if they belong to the same class then the label is **1**, otherwise it is **-1**. These values mean that their embeddings should be in the **same** or **opposite** directions, respectively.
+
+After the training step, we use only the embedder model to embed the time series. Finally, we apply a distance based machine learning algorithm to classify instances.
 
 ## Dependencies
 
