@@ -11,6 +11,10 @@ This repository contains experiments of using time series embeddings learnt by a
 
 ## Methodology
 
+The concept is to embed time series and model a new space of instances. The instances' class is the only information that drives the modeling. There are *two* neural network models - embedder and trainable model - and the embedder is **inside** the trainable model.
+
+The training is as follow: given two instances, the trainable model embeds them using the embedder model and outputs the normalized intern product between their embeddings (**cosine similarity**).
+
 ## Dependencies
 
 * numpy
