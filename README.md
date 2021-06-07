@@ -1,6 +1,6 @@
 # Time Series Embedding
 
-This repository contains experiments of using time series embeddings learnt by a neural network.
+This repository contains experiments of embedding time series using a neural network.
 
 ## Table of contents
 
@@ -11,7 +11,9 @@ This repository contains experiments of using time series embeddings learnt by a
 
 ## Methodology
 
-The concept is to embed time series and model a new space of instances. The instances' class is the only information that drives the modeling. There are *two* neural network models - embedder and trainable model - and the embedder is **inside** the trainable model.
+The concept is to embed time series and build a new space of instances. The instances' class is the only information that drives the modeling. There are *two* neural network models - embedder and trainable model - and the embedder is **inside** the trainable model as show in the figure.
+
+![Architecture](https://github.com/CaioUeno/time-series-embedding/blob/master/images/Architecture.png)
 
 The training is as follow: given a pair of instances, the trainable model embeds them using the embedder model and outputs the normalized intern product between their embeddings (**cosine similarity**). There are possible labels: if they belong to the same class then the label is **1**, otherwise it is **-1**. These values mean that their embeddings should be in the **same** or **opposite** directions, respectively. Notice that it is applied (and works) only on binary classification datasets.
 
